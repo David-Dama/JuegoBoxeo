@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.juegoboxeo.controller.EscogerPartidaController"
+      spacing="20"
+      alignment="CENTER"
+      styleClass="root">
+
+    <Label text="Escoge tu partida" styleClass="titulo"/>
+
+    <!-- TARJETA 1 -->
+    <HBox spacing="50" alignment="CENTER">
+        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+            <Label text="Nombre:" styleClass="texto"/>
+            <Label fx:id="nombre1" styleClass="texto"/>
+
+            <Label text="Victorias:" styleClass="texto"/>
+            <Label fx:id="victorias1" styleClass="texto"/>
+
+            <Label text="Derrotas:" styleClass="texto"/>
+            <Label fx:id="derrotas1" styleClass="texto"/>
+
+            <Button text="Jugar" styleClass="boton" onAction="#seleccionarPartida1"/>
+        </VBox>
+
+
+        <!-- TARJETA 2 -->
+        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+            <Label text="Nombre:" styleClass="texto"/>
+            <Label fx:id="nombre2" styleClass="texto"/>
+
+            <Label text="Victorias:" styleClass="texto"/>
+            <Label fx:id="victorias2" styleClass="texto"/>
+
+            <Label text="Derrotas:" styleClass="texto"/>
+            <Label fx:id="derrotas2" styleClass="texto"/>
+
+            <Button text="Jugar" styleClass="boton" onAction="#seleccionarPartida2"/>
+        </VBox>
+
+
+        <!-- TARJETA 3 -->
+        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+            <Label text="Nombre:" styleClass="texto"/>
+            <Label fx:id="nombre3" styleClass="texto"/>
+
+            <Label text="Victorias:" styleClass="texto"/>
+            <Label fx:id="victorias3" styleClass="texto"/>
+
+            <Label text="Derrotas:" styleClass="texto"/>
+            <Label fx:id="derrotas3" styleClass="texto"/>
+
+            <Button text="Jugar" styleClass="boton" onAction="#seleccionarPartida3"/>
+        </VBox>
+    </HBox>
+
+</VBox>

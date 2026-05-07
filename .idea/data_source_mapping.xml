@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/db/BDCreation.sql" value="8522f8e6-c30e-49a3-90f2-d0d19c261b1a" />
+    <file url="file://$PROJECT_DIR$/db/Load.sql" value="8522f8e6-c30e-49a3-90f2-d0d19c261b1a" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/juegoboxeo/dao/impl/BoxeadorDAOImpl.java" value="8522f8e6-c30e-49a3-90f2-d0d19c261b1a" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/juegoboxeo/dao/impl/InformacionGolpeDAOImpl.java" value="8522f8e6-c30e-49a3-90f2-d0d19c261b1a" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/juegoboxeo/dao/impl/PartidaBoxeadorDAOImpl.java" value="8522f8e6-c30e-49a3-90f2-d0d19c261b1a" />
+  </component>
+</project>

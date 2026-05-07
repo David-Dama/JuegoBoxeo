@@ -1,0 +1,25 @@
+.root {
+    -fx-background-image: url("/images/Fondo.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+
+.titulo {
+    -fx-font-size: 33px;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Poppins Regular";
+}
+
+.boton {
+    -fx-background-color: #d60d0d;
+    -fx-text-fill: white;
+    -fx-pref-height: 70px;
+    -fx-pref-width: 400px;
+    -fx-font-family: "Poppins Regular";
+    -fx-font-size: 30px;
+    -fx-background-radius: 20px;
+}
+
+.boton:hover {
+    -fx-background-color: #cb4141;
+}

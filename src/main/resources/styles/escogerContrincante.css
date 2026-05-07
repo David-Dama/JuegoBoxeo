@@ -1,0 +1,40 @@
+.root{
+    -fx-background-color: #13325a;
+}
+
+.titulo{
+    -fx-text-fill: white;
+    -fx-font-size: 50px;
+    -fx-font-family: Poppins Regular;
+}
+
+.texto {
+    -fx-fill: black;
+    -fx-font-family: "Poppins Regular";
+    -fx-font-size: 20px;
+}
+
+.card{
+    -fx-background-color: #fbfbfb;
+    -fx-padding: 15;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: red;
+    -fx-border-width: 2;
+    -fx-max-width: 300px;
+    -fx-max-height: 850px;
+}
+
+.boton{
+    -fx-background-color: #d60d0d;
+    -fx-text-fill: white;
+    -fx-pref-height: 50px;
+    -fx-pref-width: 150px;
+    -fx-font-family: "Poppins Regular";
+    -fx-font-size: 30px;
+    -fx-background-radius: 20px;
+}
+
+.boton:hover {
+    -fx-background-color: #cb4141;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.juegoboxeo.controller.PaginaInicioController"
+            styleClass="root">
+
+
+    <Button fx:id="botonEmpezar" AnchorPane.bottomAnchor="230"
+            AnchorPane.leftAnchor="640" text="Empezar" styleClass="boton" onAction="#irAEscogerPartida"/>
+</AnchorPane>

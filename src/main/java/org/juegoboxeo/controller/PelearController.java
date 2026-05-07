@@ -1,3 +1,3 @@
 package org.juegoboxeo.controller;
 
-public class BoxeadorController {}
+public class PelearController {}
