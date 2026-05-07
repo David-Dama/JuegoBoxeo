@@ -4,53 +4,60 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import org.juegoboxeo.dao.BoxeadorDAO;
-import org.juegoboxeo.dao.PartidaBoxeadorDAO;
-import org.juegoboxeo.dao.impl.BoxeadorDAOImpl;
-import org.juegoboxeo.dao.impl.PartidaBoxeadorDAOImpl;
+import org.juegoboxeo.dto.PartidaInfoDTO;
 import org.juegoboxeo.exceptions.NoSeEncuentranRegistrosException;
-import org.juegoboxeo.model.PartidaBoxeador;
+import org.juegoboxeo.service.EscogerPartidaService;
 
 import java.util.Objects;
 
 public class EscogerPartidaController {
     
-    // Partida 1
+    // UI
     @FXML
-    private Label nombre1;
+    private Label nombre1, nombre2, nombre3;
     @FXML
-    private Label victorias1;
+    private Label victorias1, victorias2, victorias3;
     @FXML
-    private Label derrotas1;
-    @FXML
-    private Button boton1;
+    private Label derrotas1, derrotas2, derrotas3;
     
-    // Partida 2
-    @FXML
-    private Label nombre2;
-    @FXML
-    private Label victorias2;
-    @FXML
-    private Label derrotas2;
-    @FXML
-    private Button boton2;
+    // SERVICE
+    private final EscogerPartidaService service = new EscogerPartidaService();
     
-    // Partida 3
     @FXML
-    private Label nombre3;
-    @FXML
-    private Label victorias3;
-    @FXML
-    private Label derrotas3;
-    @FXML
-    private Button boton3;
+    public void initialize() {
+        cargarPartidas();
+    }
     
-    //DAOs
-    private final PartidaBoxeadorDAO partidaBoxeadorDAO = new PartidaBoxeadorDAOImpl();
-    private final BoxeadorDAO boxeadorDAO = new BoxeadorDAOImpl();
+    private void cargarPartidas() {
+        cargar(1, nombre1, victorias1, derrotas1);
+        cargar(2, nombre2, victorias2, derrotas2);
+        cargar(3, nombre3, victorias3, derrotas3);
+    }
+    
+    private void cargar(int idPartida, Label nombre, Label victorias, Label derrotas) {
+        try {
+            PartidaInfoDTO info = service.obtenerInfoPartida(idPartida);
+            
+            if (info == null) {
+                mostrarVacio(nombre, victorias, derrotas);
+                return;
+            }
+            
+            nombre.setText(info.getNombre());
+            victorias.setText(String.valueOf(info.getVictorias()));
+            derrotas.setText(String.valueOf(info.getDerrotas()));
+        } catch (NoSeEncuentranRegistrosException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void mostrarVacio(Label nombre, Label victorias, Label derrotas) {
+        nombre.setText("Crear partida");
+        victorias.setText("-");
+        derrotas.setText("-");
+    }
     
     @FXML
     private void seleccionarPartida1(ActionEvent event) {
@@ -84,43 +91,5 @@ public class EscogerPartidaController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    @FXML
-    public void initialize() {
-        
-        cargarPartida(1, nombre1, victorias1, derrotas1);
-        cargarPartida(2, nombre2, victorias2, derrotas2);
-        cargarPartida(3, nombre3, victorias3, derrotas3);
-    }
-    
-    private void cargarPartida(int idPartida, Label nombre, Label victorias, Label derrotas) {
-        
-        try {
-            
-            Integer idBoxeador = partidaBoxeadorDAO.idBoxeadorDePartida(idPartida);
-            
-            if (idBoxeador == null) {
-                mostrarVacio(nombre, victorias, derrotas);
-                return;
-            }
-            
-            PartidaBoxeador pb = partidaBoxeadorDAO.cargarPartidaBoxeador(idBoxeador, idPartida);
-            
-            String nombreBoxeador = boxeadorDAO.nombreBoxeador(idBoxeador, idPartida);
-            
-            nombre.setText(nombreBoxeador);
-            victorias.setText(String.valueOf(pb.getVictorias()));
-            derrotas.setText(String.valueOf(pb.getDerrotas()));
-            
-        } catch (NoSeEncuentranRegistrosException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    
-    private void mostrarVacio(Label nombre, Label victorias, Label derrotas) {
-        nombre.setText("Crear partida");
-        victorias.setText("-");
-        derrotas.setText("-");
     }
 }
