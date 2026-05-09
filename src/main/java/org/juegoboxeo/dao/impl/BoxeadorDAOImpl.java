@@ -4,13 +4,16 @@ import org.juegoboxeo.config.DatabaseConnection;
 import org.juegoboxeo.dao.BoxeadorDAO;
 import org.juegoboxeo.exceptions.NoSeEncuentranRegistrosException;
 import org.juegoboxeo.model.Boxeador;
+import org.juegoboxeo.model.Golpe;
+import org.juegoboxeo.model.InformacionGolpe;
 
 import java.sql.*;
+import java.util.Map;
 
 public class BoxeadorDAOImpl implements BoxeadorDAO {
     //Create
     @Override
-    public void insertarBoxeador(Boxeador b) {
+    public int insertarBoxeador(Boxeador b) {
         String sql = "INSERT INTO boxeador (nombre, anyo_nacimiento, descripcion, vida, stamina) VALUES (?, ?, ?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -23,6 +26,14 @@ public class BoxeadorDAOImpl implements BoxeadorDAO {
             
             pstm.executeUpdate();
             
+            try (ResultSet rs = pstm.getGeneratedKeys()) {
+                
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+                
+                throw new SQLException("No se generó ID");
+            }
         } catch (SQLException e) {
             throw new RuntimeException("Error al insertar boxeador", e);
         }
@@ -30,7 +41,7 @@ public class BoxeadorDAOImpl implements BoxeadorDAO {
     
     //Read
     @Override
-    public Boxeador cargarBoxeador(int idBoxeador, int idPartida) throws NoSeEncuentranRegistrosException {
+    public Boxeador cargarBoxeador(int idBoxeador, int idPartida, Map <Golpe, InformacionGolpe> golpeInformacionGolpeMap) throws NoSeEncuentranRegistrosException {
         String sql = "SELECT b.nombre, b.anyo_nacimiento, b.descripcion, b.vida, b.stamina FROM boxeador b INNER JOIN partida_boxeador pb ON b.id = pb.id_boxeador WHERE b.id = ? AND pb.id_partida = ?";
         
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstm = conn.prepareStatement(sql)) {
@@ -48,7 +59,7 @@ public class BoxeadorDAOImpl implements BoxeadorDAO {
                     int vidaMax = res.getInt("vida");
                     int staminaMax = res.getInt("stamina");
                     
-                    return new Boxeador(idBoxeador, nombre, anyoNacimiento, descripcion, vidaMax, staminaMax);
+                    return new Boxeador(idBoxeador, nombre, anyoNacimiento, descripcion, vidaMax, staminaMax, golpeInformacionGolpeMap);
                 } else {
                     throw new NoSeEncuentranRegistrosException("Boxeador no encontrado");
                 }
@@ -103,5 +114,21 @@ public class BoxeadorDAOImpl implements BoxeadorDAO {
         }
     }
     
-    
+    //Delete
+    @Override
+    public void eliminarBoxeador(int idBoxeador) {
+        
+        String sql = "DELETE FROM boxeador WHERE id = ?";
+        
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, idBoxeador);
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar boxeador", e);
+        }
+    }
 }
+    

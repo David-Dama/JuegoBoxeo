@@ -10,24 +10,40 @@ import org.juegoboxeo.model.PartidaBoxeador;
 
 public class EscogerPartidaService {
     
-    private final PartidaBoxeadorDAO partidaDAO = new PartidaBoxeadorDAOImpl();
     private final BoxeadorDAO boxeadorDAO = new BoxeadorDAOImpl();
+    private final PartidaBoxeadorDAO partidaBoxeadorDAO = new PartidaBoxeadorDAOImpl();
     
     public PartidaInfoDTO obtenerInfoPartida(int idPartida) throws NoSeEncuentranRegistrosException {
         
-        Integer idBoxeador = partidaDAO.idBoxeadorDePartida(idPartida);
+        Integer idBoxeador = partidaBoxeadorDAO.idBoxeadorDePartida(idPartida);
         
         if (idBoxeador == null) {
             return null;
         }
         
-        PartidaBoxeador pb = partidaDAO.cargarPartidaBoxeador(idBoxeador, idPartida);
+        PartidaBoxeador pb = partidaBoxeadorDAO.cargarPartidaBoxeador(idBoxeador, idPartida);
         String nombre = boxeadorDAO.nombreBoxeador(idBoxeador, idPartida);
         
-        return new PartidaInfoDTO(
-            nombre,
-            pb.getVictorias(),
-            pb.getDerrotas()
-        );
+        return new PartidaInfoDTO(nombre, pb.getVictorias(), pb.getDerrotas());
+    }
+    
+    public boolean existeJugadorEnPartida(int idPartida) {
+        return partidaBoxeadorDAO.existeJugador(idPartida);
+    }
+    
+    public int idBoxeadorDePartida(int idPartida) {
+        return partidaBoxeadorDAO.idBoxeadorDePartida(idPartida);
+    }
+    
+    public void eliminarJugador(int idPartida) {
+        Integer idBoxeador = partidaBoxeadorDAO.idBoxeadorDePartida(idPartida);
+        
+        if (idBoxeador == null) {
+            return;
+        }
+        
+        partidaBoxeadorDAO.eliminarJugador(idPartida, idBoxeador);
+        
+        boxeadorDAO.eliminarBoxeador(idBoxeador);
     }
 }

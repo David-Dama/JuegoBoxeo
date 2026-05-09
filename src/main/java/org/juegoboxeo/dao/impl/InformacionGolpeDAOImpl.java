@@ -15,6 +15,38 @@ import java.util.Map;
 
 public class InformacionGolpeDAOImpl implements InformacionGolpeDAO {
     
+    //Create
+    @Override
+    public void insertarGolpesBase(int boxeadorId) {
+        String sql = "INSERT INTO informacion_golpe (boxeador_id, golpe, danyo, precision_golpe, probabilidad_critico, coste_stamina) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            
+            insertarGolpe(conn, sql, boxeadorId, "JAB", 10, 80, 25, 15);
+            insertarGolpe(conn, sql, boxeadorId, "CROSS", 25, 40, 30, 20);
+            insertarGolpe(conn, sql, boxeadorId, "HOOK", 25, 60, 25, 25);
+            insertarGolpe(conn, sql, boxeadorId, "UPPER", 30, 50, 15, 35);
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al insertar golpes base", e);
+        }
+    }
+    
+    private void insertarGolpe(Connection conn, String sql, int boxeadorId, String golpe, int danyo, int precision, int critico, int stamina) throws SQLException {
+        
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, boxeadorId);
+            ps.setString(2, golpe);
+            ps.setInt(3, danyo);
+            ps.setInt(4, precision);
+            ps.setInt(5, critico);
+            ps.setInt(6, stamina);
+            
+            ps.executeUpdate();
+        }
+    }
+    
     //Read
     @Override
     public Map <Golpe, InformacionGolpe> obtenerGolpesPorBoxeador(int idBoxeador, int idPartida) {
@@ -54,4 +86,21 @@ public class InformacionGolpeDAOImpl implements InformacionGolpeDAO {
         
         return Collections.emptyMap();
     }
+    
+    //Delete
+    @Override
+    public void eliminarPorBoxeador(int boxeadorId) {
+        String sql = "DELETE FROM informacion_golpe WHERE boxeador_id = ?";
+        
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, boxeadorId);
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

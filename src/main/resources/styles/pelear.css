@@ -3,3 +3,69 @@
     -fx-background-size: cover;
     -fx-background-position: center;
 }
+
+.infoGolpes, .botonJugador, .botonContrincante, .tarjetaInfoGolpe{
+    -fx-background-radius: 10;
+    -fx-background-color: #e33636;
+    -fx-background-insets: 0;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-font-family: Poppins Regular;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+
+.botonJugador, .botonContrincante, .tarjetaInfoGolpe{
+    -fx-pref-width: 160;
+}
+
+.botonJugador, .botonContrincante{
+    -fx-pref-height: 30;
+    -fx-font-size: 20;
+}
+
+.tarjetaInfoGolpe{
+    -fx-pref-height: 15;
+    -fx-font-size: 15;
+}
+
+.infoGolpes{
+    -fx-padding: 5;
+     -fx-pref-height: 50;
+     -fx-font-size: 20;
+ }
+
+.botonJugador:hover{
+    -fx-background-color: #e30d0d;
+}
+
+.vidaYEstamina {
+    -fx-pref-width: 330;
+    -fx-background-radius: 10;
+    -fx-background-color: #e33636;
+    -fx-background-insets: 0;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-font-family: Poppins Regular;
+    -fx-font-size: 20;
+    -fx-text-fill: black;
+    -fx-padding: 5;
+}
+
+.logsTurnos{
+    -fx-background-radius: 10;
+    -fx-background-color: #e3dddd;
+    -fx-background-insets: 0;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-font-family: Poppins Regular;
+    -fx-font-size: 15;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-padding: 5;
+}

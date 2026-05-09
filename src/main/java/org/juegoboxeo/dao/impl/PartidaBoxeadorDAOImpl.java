@@ -12,6 +12,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PartidaBoxeadorDAOImpl implements PartidaBoxeadorDAO {
+    
+    //Create
+    @Override
+    public void insertarPartidaBoxeador(PartidaBoxeador pb) {
+        
+        String sql = "INSERT INTO partida_boxeador (id_partida, id_boxeador, rol, victorias, derrotas) VALUES (?, ?, ?, ?, ?)";
+        
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, pb.getIdPartida());
+            ps.setInt(2, pb.getIdBoxeador());
+            ps.setString(3, pb.getRol().name());
+            ps.setInt(4, pb.getVictorias());
+            ps.setInt(5, pb.getDerrotas());
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al insertar partida_boxeador", e);
+        }
+    }
+    
     //Read
     @Override
     public PartidaBoxeador cargarPartidaBoxeador(int idBoxeador, int idPartida) throws NoSeEncuentranRegistrosException {
@@ -42,6 +64,24 @@ public class PartidaBoxeadorDAOImpl implements PartidaBoxeadorDAO {
             
         } catch (SQLException e) {
             throw new RuntimeException("Error al cargar PartidaBoxeador", e);
+        }
+    }
+    
+    @Override
+    public boolean existeJugador(int idPartida) {
+        String sql = "SELECT 1 FROM partida_boxeador WHERE id_partida = ? AND rol = 'JUGADOR' LIMIT 1";
+        
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, idPartida);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                
+                return rs.next();
+            }
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al comprobar si existe jugador", e);
         }
     }
     
@@ -198,6 +238,25 @@ public class PartidaBoxeadorDAOImpl implements PartidaBoxeadorDAO {
             
         } catch (SQLException e) {
             throw new RuntimeException("Error al actualizar derrotas", e);
+        }
+    }
+    
+    //Delete
+    @Override
+    public void eliminarJugador(int idPartida, int idBoxeador) {
+        
+        String sql = "DELETE FROM partida_boxeador WHERE id_partida = ? AND id_boxeador = ? AND rol = 'JUGADOR'";
+        
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, idPartida);
+            ps.setInt(2, idBoxeador);
+            
+            ps.executeUpdate();
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al eliminar jugador de partida", e);
         }
     }
 }

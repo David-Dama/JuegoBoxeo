@@ -30,11 +30,13 @@ public class EscogerContrincanteController {
     private Label victoriasYderrotas1, victoriasYderrotas2, victoriasYderrotas3, victoriasYderrotas4, victoriasYderrotas5;
     
     private int idPartida;
+    private int idBoxeadorJugador;
     
     private final EscogerContrincanteService service = new EscogerContrincanteService();
     
-    public void setIdPartida(int idPartida) {
+    public void settearDatos(int idPartida, int idBoxeadorJugador) {
         this.idPartida = idPartida;
+        this.idBoxeadorJugador = idBoxeadorJugador;
         
         cargarTodo();
     }
@@ -51,11 +53,6 @@ public class EscogerContrincanteController {
         try {
             BoxeadorDTO c = service.obtenerContrincante(idBoxeador, idPartida);
             
-            if (c == null) {
-                nombre.setText("Desconocido");
-                return;
-            }
-            
             nombre.setText(c.getNombre());
             anyoNacimiento.setText("Año: " + c.getAnyoNacimiento());
             descripcion.setText(c.getDescripcion());
@@ -67,7 +64,7 @@ public class EscogerContrincanteController {
         }
         
     }
-
+    
     @FXML
     public void jugarContraContrincante1(ActionEvent event) {pelear(event, 1);}
     
@@ -83,7 +80,7 @@ public class EscogerContrincanteController {
     @FXML
     public void jugarContraContrincante5(ActionEvent event) {pelear(event, 5);}
     
-    private void pelear(ActionEvent event, int idBoxeador) {
+    private void pelear(ActionEvent event, int idBoxeadorContrincante) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/pelear.fxml"));
             
@@ -91,7 +88,7 @@ public class EscogerContrincanteController {
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/pelear.css")).toExternalForm());
             
             PelearController controller = loader.getController();
-            controller.settearDatos(idBoxeador, idPartida);
+            controller.settearDatos(this.idBoxeadorJugador, idBoxeadorContrincante, this.idPartida);
             
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

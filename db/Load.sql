@@ -11,27 +11,27 @@ VALUES (3);
 INSERT INTO boxeador(nombre, anyo_nacimiento, descripcion, vida, stamina)
 VALUES ('Payo Muay Thai', 2007,
         'Es un matao, es más payo que despertarse a las 5am para sacar al perro, más que pagar con tarjeta o incluso más payo que no tener a sus primos. No tiene ningún punto fuerte, y encima es payo',
-        100, 100);
+        75, 100);
 
 INSERT INTO boxeador(nombre, anyo_nacimiento, descripcion, vida, stamina)
 VALUES ('Vallecas Gangsta Boy', 2007,
         'Luchador de Vallecas, acostumbrado a los cuchillos y pistolas. Vive en uno de los barrios más conflictivos del mundo. Sus reflejos son increíblemente altos y esquiva con facilidad (acostumbrado a las peleas y esquivar balas)',
-        100, 100);
+        120, 150);
 
 INSERT INTO boxeador(nombre, anyo_nacimiento, descripcion, vida, stamina)
 VALUES ('Chino final boss', 2002,
         'Nacido en Tenerife (chino de hacendado) y con los ojos más cerrados que un topo. Tiene un aguante descomunal (puede trabajar 25 horas al día), va al gimnasio 8 días a la semana. Un enemigo formidable que tiene ventaja genética (es chino, y siempre habrá un chino que lo haga mejor que tú)',
-        100, 100);
+        150, 250);
 
 INSERT INTO boxeador(nombre, anyo_nacimiento, descripcion, vida, stamina)
 VALUES ('Chiquitito', 2007,
         'Con 5 metros de alto y brazos del tamaño de sus cuádriceps, chiquitito destaca por su fuerza y golpes contundentes. No acierta todos los golpes, pero como chiquitito te de un one-tap vete preparándote para saludar a San Pedro',
-        100, 100);
+        200, 100);
 
 INSERT INTO boxeador(nombre, anyo_nacimiento, descripcion, vida, stamina)
 VALUES ('MPOfessor', 1999,
         'Todo un máquina en programación y en el deporte, completamente imbatible, todas las stats al máximo, solo hay una manera de vencerle... throwearle al próximo contrincante y que se ocupe otro (las famosas buenas prácticas).',
-        100, 100);
+        300, 300);
 
 -- Insertamos los datos en partida_boxeador
 
@@ -63,35 +63,35 @@ VALUES (3, 1, 'IA', 0, 0),
 
 -- BOXEADOR 1
 INSERT INTO informacion_golpe
-VALUES (1, 'JAB', 1, 1, 1, 1),
-       (1, 'CROSS', 1, 1, 1, 1),
-       (1, 'HOOK', 1, 1, 1, 1),
-       (1, 'UPPER', 1, 1, 1, 1);
+VALUES (1, 'JAB', 15, 40, 25, 10),
+       (1, 'CROSS', 20, 35, 25, 12),
+       (1, 'HOOK', 30, 30, 10, 15),
+       (1, 'UPPER', 25, 25, 35, 12);
 
 -- BOXEADOR 2
 INSERT INTO informacion_golpe
-VALUES (2, 'JAB', 2, 2, 2, 2),
-       (2, 'CROSS', 2, 2, 2, 2),
-       (2, 'HOOK', 2, 2, 2, 2),
-       (2, 'UPPER', 2, 2, 2, 2);
+VALUES (2, 'JAB', 10, 70, 50, 2),
+       (2, 'CROSS', 25, 65, 15, 2),
+       (2, 'HOOK', 15, 70, 40, 2),
+       (2, 'UPPER', 25, 45, 30, 2);
 
 -- BOXEADOR 3
 INSERT INTO informacion_golpe
-VALUES (3, 'JAB', 3, 3, 3, 3),
-       (3, 'CROSS', 3, 3, 3, 3),
-       (3, 'HOOK', 3, 3, 3, 3),
-       (3, 'UPPER', 3, 3, 3, 3);
+VALUES (3, 'JAB', 10, 75, 10, 20),
+       (3, 'CROSS', 20, 50, 5, 20),
+       (3, 'HOOK', 15, 35, 50, 20),
+       (3, 'UPPER', 15, 55, 20, 20);
 
 -- BOXEADOR 4
 INSERT INTO informacion_golpe
-VALUES (4, 'JAB', 4, 4, 4, 4),
-       (4, 'CROSS', 4, 4, 4, 4),
-       (4, 'HOOK', 4, 4, 4, 4),
-       (4, 'UPPER', 4, 4, 4, 4);
+VALUES (4, 'JAB', 30, 20, 5, 25),
+       (4, 'CROSS', 40, 15, 10, 30),
+       (4, 'HOOK', 50, 10, 15, 25),
+       (4, 'UPPER', 60, 5, 20, 40);
 
 -- BOXEADOR 5
 INSERT INTO informacion_golpe
-VALUES (5, 'JAB', 5, 5, 5, 5),
-       (5, 'CROSS', 5, 5, 5, 5),
-       (5, 'HOOK', 5, 5, 5, 5),
-       (5, 'UPPER', 5, 5, 5, 5);
+VALUES (5, 'JAB', 25, 80, 20, 10),
+       (5, 'CROSS', 25, 65, 25, 15),
+       (5, 'HOOK', 30, 60, 25, 20),
+       (5, 'UPPER', 40, 50, 20, 25);

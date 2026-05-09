@@ -27,18 +27,21 @@ public class Boxeador {
      @param vidaMax vida maxima del boxeador
      @param staminaMax stamina maxima del boxeador
      */
-    public Boxeador(int id, String nombre, int anyoNacimiento, String descripcion, int vidaMax, int staminaMax) {
+    public Boxeador(int id, String nombre, int anyoNacimiento, String descripcion, int vidaMax, int staminaMax, Map <Golpe, InformacionGolpe> golpes) {
         this.id = id;
         this.nombre = nombre;
         this.anyoNacimiento = anyoNacimiento;
         this.descripcion = descripcion;
         this.vidaMax = vidaMax;
         this.staminaMax = staminaMax;
-        this.golpes = new HashMap <Golpe, InformacionGolpe>();
+        this.golpes = golpes;
         
         //Cuando se crea el objeto queremos que tengan vida maxima
         this.vidaActual = vidaMax;
         this.staminaActual = staminaMax;
+    }
+    
+    public Boxeador() {
     }
     
     /**
@@ -136,7 +139,7 @@ public class Boxeador {
      
      @return puntos de vida.
      */
-    public int getVida() {
+    public int getVidaActual() {
         return vidaActual;
     }
     
@@ -145,7 +148,7 @@ public class Boxeador {
      
      @param vida nuevos puntos de vida.
      */
-    public void setVida(int vida) {
+    public void setVidaActual(int vida) {
         this.vidaActual = vida;
     }
     
@@ -172,7 +175,7 @@ public class Boxeador {
      
      @return energía disponible.
      */
-    public int getStamina() {
+    public int getStaminaActual() {
         return staminaActual;
     }
     
@@ -181,7 +184,7 @@ public class Boxeador {
      
      @param stamina nueva energía del boxeador.
      */
-    public void setStamina(int stamina) {
+    public void setStaminaActual(int stamina) {
         this.staminaActual = stamina;
     }
     
@@ -251,12 +254,7 @@ public class Boxeador {
         this.staminaActual = Math.max(0, this.staminaActual - cantidad);
     }
     
-    /**
-     Indica si el boxeador tiene stamina suficiente.
-     
-     @return true si la stamina es mayor que 0, false si está agotada.
-     */
-    public boolean tieneStamina() {
-        return this.staminaActual > 0;
+    public void recuperarStaminaMitad() {
+        this.staminaActual = this.staminaMax / 2;
     }
 }

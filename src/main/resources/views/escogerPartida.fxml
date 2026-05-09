@@ -24,6 +24,7 @@
             <Label fx:id="derrotas1" styleClass="texto"/>
 
             <Button text="Jugar" styleClass="boton" onAction="#seleccionarPartida1"/>
+            <Button text="Eliminar" styleClass="boton" onAction="#eliminarPartida1"/>
         </VBox>
 
 
@@ -39,6 +40,7 @@
             <Label fx:id="derrotas2" styleClass="texto"/>
 
             <Button text="Jugar" styleClass="boton" onAction="#seleccionarPartida2"/>
+            <Button text="Eliminar" styleClass="boton" onAction="#eliminarPartida2"/>
         </VBox>
 
 
@@ -54,6 +56,7 @@
             <Label fx:id="derrotas3" styleClass="texto"/>
 
             <Button text="Jugar" styleClass="boton" onAction="#seleccionarPartida3"/>
+            <Button text="Eliminar" styleClass="boton" onAction="#eliminarPartida3"/>
         </VBox>
     </HBox>
 

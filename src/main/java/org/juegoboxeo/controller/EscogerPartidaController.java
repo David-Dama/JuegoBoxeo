@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.juegoboxeo.dto.PartidaInfoDTO;
@@ -59,29 +61,41 @@ public class EscogerPartidaController {
         derrotas.setText("-");
     }
     
+    //Seleccionar partida
     @FXML
     private void seleccionarPartida1(ActionEvent event) {
-        escogerContrincante(event, 1);
+        entrarEnPartida(event, 1);
     }
     
     @FXML
     private void seleccionarPartida2(ActionEvent event) {
-        escogerContrincante(event, 2);
+        entrarEnPartida(event, 2);
     }
     
     @FXML
     private void seleccionarPartida3(ActionEvent event) {
-        escogerContrincante(event, 3);
+        entrarEnPartida(event, 3);
     }
     
-    private void escogerContrincante(ActionEvent event, int idPartida) {
+    private void entrarEnPartida(ActionEvent event, int idPartida) {
+        
+        boolean hayJugador = service.existeJugadorEnPartida(idPartida);
+        
+        if (!hayJugador) {
+            abrirCrearBoxeador(event, idPartida);
+        } else {
+            abrirEscogerContrincante(event, idPartida, service.idBoxeadorDePartida(idPartida));
+        }
+    }
+    
+    private void abrirCrearBoxeador(ActionEvent event, int idPartida) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/escogerContrincante.fxml"));
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/crearBoxeador.fxml"));
             
             Scene scene = new Scene(loader.load(), 1750, 950);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/escogerContrincante.css")).toExternalForm());
             
-            EscogerContrincanteController controller = loader.getController();
+            CrearBoxeadorController controller = loader.getController();
             controller.setIdPartida(idPartida);
             
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -90,6 +104,57 @@ public class EscogerPartidaController {
             
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    
+    private void abrirEscogerContrincante(ActionEvent event, int idPartida, int idBoxeadorJugador) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/escogerContrincante.fxml"));
+            
+            Scene scene = new Scene(loader.load(), 1750, 950);
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/escogerContrincante.css")).toExternalForm());
+            
+            EscogerContrincanteController controller = loader.getController();
+            controller.settearDatos(idPartida, idBoxeadorJugador);
+            
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            
+            stage.setScene(scene);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //Eliminar partidas
+    @FXML
+    private void eliminarPartida1() {
+        confirmarEliminarPartida(1);
+    }
+    
+    @FXML
+    private void eliminarPartida2() {
+        confirmarEliminarPartida(2);
+    }
+    
+    @FXML
+    private void eliminarPartida3() {
+        confirmarEliminarPartida(3);
+    }
+    
+    @FXML
+    private void confirmarEliminarPartida(int idPartida) {
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText("Eliminar partida");
+        alert.setContentText("¿Estás seguro de que quieres eliminar esta partida?");
+        
+        ButtonType resultado = alert.showAndWait().orElse(ButtonType.CANCEL);
+        
+        if (resultado == ButtonType.OK) {
+            service.eliminarJugador(idPartida);
+            cargarPartidas();
         }
     }
 }

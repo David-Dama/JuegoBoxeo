@@ -1,10 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.juegoboxeo.controller.PelearController"
+            styleClass="root">
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.juegoboxeo.controller.PelearController"
-        styleClass="root">
+    <VBox spacing="25" AnchorPane.leftAnchor="690" AnchorPane.topAnchor="170" alignment="CENTER">
+        <VBox spacing="5" alignment="CENTER">
+        <Label text="Jugador" styleClass="logsTurnos"/>
+        <Label fx:id="logTurnoJugador" text="GOLPE | RESULTADO | DAÑO | CRÍTICO | STAMINA"
+               styleClass="logsTurnos"/>
+        </VBox>
+        <VBox spacing="5" alignment="CENTER">
+        <Label text="Contrincante" styleClass="logsTurnos" />
+        <Label fx:id="logTurnoContrincante" text="GOLPE | RESULTADO | DAÑO | CRÍTICO | STAMINA"
+               styleClass="logsTurnos"/>
+        </VBox>
+    </VBox>
 
-</VBox>
+    <Label text="Daño - CosteStamina - ProbCritico - Precisión" styleClass="infoGolpes" AnchorPane.leftAnchor="635"
+           AnchorPane.bottomAnchor="210"/>
+
+    <VBox spacing="15" AnchorPane.rightAnchor="300" AnchorPane.bottomAnchor="160">
+        <Label fx:id="vidaContrincante" text="Vida = 100" styleClass="vidaYEstamina"/>
+        <Label fx:id="staminaContrincante" text="Stamina = 100" styleClass="vidaYEstamina"/>
+
+        <ImageView fx:id="imagenContrincante" fitWidth="325" fitHeight="325"/>
+
+        <VBox spacing="5">
+            <HBox spacing="5">
+                <VBox>
+                    <Button text="JAB" styleClass="botonContrincante"/>
+                    <Label fx:id="infoJabContrincante" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+                <VBox>
+                    <Button text="CROSS" styleClass="botonContrincante"/>
+                    <Label fx:id="infoCrossContrincante" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="5">
+                <VBox>
+                    <Button text="HOOK" styleClass="botonContrincante"/>
+                    <Label fx:id="infoHookContrincante" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+                <VBox>
+                    <Button text="UPPER" styleClass="botonContrincante"/>
+                    <Label fx:id="infoUpperContrincante" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <VBox spacing="15" AnchorPane.leftAnchor="300" AnchorPane.bottomAnchor="160">
+        <Label fx:id="vidaJugador" text="Vida = 100" styleClass="vidaYEstamina"/>
+        <Label fx:id="staminaJugador" text="Stamina = 100" styleClass="vidaYEstamina"/>
+
+        <ImageView fx:id="imagenJugador" fitWidth="325" fitHeight="325"/>
+
+        <VBox spacing="5">
+            <HBox spacing="5">
+                <VBox>
+                    <Button text="JAB" styleClass="botonJugador" onAction="#usarJab"/>
+                    <Label fx:id="infoJabJugador" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+                <VBox>
+                    <Button text="CROSS" styleClass="botonJugador" onAction="#usarCross"/>
+                    <Label fx:id="infoCrossJugador" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+            </HBox>
+            <HBox spacing="5">
+                <VBox>
+                    <Button text="HOOK" styleClass="botonJugador" onAction="#usarHook"/>
+                    <Label fx:id="infoHookJugador" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+                <VBox>
+                    <Button text="UPPER" styleClass="botonJugador" onAction="#usarUpper"/>
+                    <Label fx:id="infoUpperJugador" styleClass="tarjetaInfoGolpe"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>
