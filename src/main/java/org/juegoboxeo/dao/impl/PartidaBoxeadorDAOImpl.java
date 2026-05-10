@@ -241,6 +241,21 @@ public class PartidaBoxeadorDAOImpl implements PartidaBoxeadorDAO {
         }
     }
     
+    @Override
+    public void resetearStatsPartida(int idPartida) {
+        
+        String sql = "UPDATE partida_boxeador SET victorias = 0, derrotas = 0 WHERE id_partida = ?";
+        
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstm = conn.prepareStatement(sql)) {
+            pstm.setInt(1, idPartida);
+            
+            pstm.executeUpdate();
+            
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al resetear stats", e);
+        }
+    }
+    
     //Delete
     @Override
     public void eliminarJugador(int idPartida, int idBoxeador) {

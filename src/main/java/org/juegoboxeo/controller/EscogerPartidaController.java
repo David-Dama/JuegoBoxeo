@@ -89,7 +89,7 @@ public class EscogerPartidaController {
     private void abrirCrearBoxeador(ActionEvent event, int idPartida) {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         
-        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/crearBoxeador.fxml", "/views/crearBoxeador.css");
+        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/crearBoxeador.fxml", "/styles/crearBoxeador.css");
         
         CrearBoxeadorController controller = loader.getController();
         

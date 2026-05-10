@@ -103,4 +103,12 @@ public class CrearBoxeadorController {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+    
+    public void volverAEscogerPartida(ActionEvent event) {
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        
+        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/escogerPartida.fxml", "/styles/escogerPartida.css");
+        
+        EscogerPartidaController controller = loader.getController();
+    }
 }

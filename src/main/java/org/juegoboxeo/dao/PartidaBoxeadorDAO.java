@@ -28,6 +28,8 @@ public interface PartidaBoxeadorDAO {
     
     void setDerrotas(int valor, int idBoxeador, int idPartida) throws NoSeEncuentranRegistrosException;
     
+    void resetearStatsPartida(int idPartida);
+    
     //Delete
     void eliminarJugador(int idPartida, int idBoxeador);
 }

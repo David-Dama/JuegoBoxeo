@@ -36,14 +36,20 @@ public class EscogerPartidaService {
     }
     
     public void eliminarJugador(int idPartida) {
+        
         Integer idBoxeador = partidaBoxeadorDAO.idBoxeadorDePartida(idPartida);
         
         if (idBoxeador == null) {
             return;
         }
         
+        // Reinicia victorias y derrotas
+        partidaBoxeadorDAO.resetearStatsPartida(idPartida);
+        
+        // Elimina al jugador de la partida
         partidaBoxeadorDAO.eliminarJugador(idPartida, idBoxeador);
         
+        // Elimina el boxeador
         boxeadorDAO.eliminarBoxeador(idBoxeador);
     }
 }

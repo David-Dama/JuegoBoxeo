@@ -39,6 +39,8 @@
 
 .botonJugador:hover {
     -fx-background-color: #e30d0d;
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
 }
 
 .vidaYEstamina {

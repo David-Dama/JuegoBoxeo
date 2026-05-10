@@ -87,4 +87,12 @@ public class EscogerContrincanteController {
         PelearController controller = loader.getController();
         controller.settearDatos(this.idBoxeadorJugador, idBoxeadorContrincante, this.idPartida);
     }
+    
+    public void volverAEscogerPartida(ActionEvent actionEvent) {
+        Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
+        
+        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/escogerPartida.fxml", "/styles/escogerPartida.css");
+        
+        EscogerPartidaController controller = loader.getController();
+    }
 }

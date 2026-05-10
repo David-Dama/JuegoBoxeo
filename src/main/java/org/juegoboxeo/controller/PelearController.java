@@ -153,6 +153,8 @@ public class PelearController {
     
     private void actualizarPantalla() {
         
+        String nombreContrincante = service.getContrincante().getNombre();
+        
         vidaJugador.setText("Vida = " + service.getJugador().getVidaActual());
         
         vidaContrincante.setText("Vida = " + service.getContrincante().getVidaActual());
@@ -161,9 +163,9 @@ public class PelearController {
         
         staminaContrincante.setText("Stamina = " + service.getContrincante().getStaminaActual());
         
-        imagenJugador.setImage(new Image("/images/Fondo.png"));
+        imagenJugador.setImage(new Image("/images/Jugador.png"));
         
-        imagenContrincante.setImage(new Image("/images/Fondo.png"));
+        imagenContrincante.setImage(new Image("/images/" + nombreContrincante + ".png"));
     }
     
     private void comprobarGanador() {

@@ -13,13 +13,28 @@
 .boton {
     -fx-background-color: #d60d0d;
     -fx-text-fill: white;
+
     -fx-pref-height: 70px;
     -fx-pref-width: 400px;
+
     -fx-font-family: "Poppins Regular";
     -fx-font-size: 30px;
+
     -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+
+    -fx-padding: 0 15 0 15;
+    -fx-alignment: center;
+
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
 }
 
 .boton:hover {
     -fx-background-color: #cb4141;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }

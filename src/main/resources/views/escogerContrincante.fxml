@@ -3,85 +3,96 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.juegoboxeo.controller.EscogerContrincanteController"
-      spacing="20"
-      alignment="CENTER"
-      styleClass="root">
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.juegoboxeo.controller.EscogerContrincanteController"
+           styleClass="root">
 
-    <Label text="Escoge contrincante" styleClass="titulo"/>
+    <VBox spacing="20"
+          alignment="CENTER">
+        <Label text="Escoge contrincante" styleClass="titulo"/>
 
 
-    <HBox spacing="50" alignment="CENTER">
-        <!-- CONTRINCANTE 1 -->
-        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
-            <Label fx:id="nombre1" styleClass="texto"/>
-            <Label fx:id="anyoNacimiento1" styleClass="texto"/>
-            <TextFlow prefWidth="300" prefHeight="400">
-                <Text fx:id="descripcion1" styleClass="texto"/>
-            </TextFlow>
-            <Label fx:id="vida1" styleClass="texto"/>
-            <Label fx:id="stamina1" styleClass="texto"/>
-            <Label fx:id="victoriasYderrotas1" styleClass="texto"/>
-            <Region VBox.vgrow="ALWAYS"/>
-            <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante1"/>
-        </VBox>
+        <HBox spacing="50" alignment="CENTER">
+            <!-- CONTRINCANTE 1 -->
+            <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+                <Label fx:id="nombre1" styleClass="texto"/>
+                <Label fx:id="anyoNacimiento1" styleClass="texto"/>
+                <TextFlow prefWidth="300" prefHeight="400">
+                    <Text fx:id="descripcion1" styleClass="texto"/>
+                </TextFlow>
+                <Label fx:id="vida1" styleClass="texto"/>
+                <Label fx:id="stamina1" styleClass="texto"/>
+                <Label fx:id="victoriasYderrotas1" styleClass="texto"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante1"/>
+            </VBox>
 
-        <!-- CONTRINCANTE 2 -->
-        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
-            <Label fx:id="nombre2" styleClass="texto"/>
-            <Label fx:id="anyoNacimiento2" styleClass="texto"/>
-            <TextFlow prefWidth="300" prefHeight="400">
-                <Text fx:id="descripcion2" styleClass="texto"/>
-            </TextFlow>
-            <Label fx:id="vida2" styleClass="texto"/>
-            <Label fx:id="stamina2" styleClass="texto"/>
-            <Label fx:id="victoriasYderrotas2" styleClass="texto"/>
-            <Region VBox.vgrow="ALWAYS"/>
-            <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante2"/>
-        </VBox>
+            <!-- CONTRINCANTE 2 -->
+            <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+                <Label fx:id="nombre2" styleClass="texto"/>
+                <Label fx:id="anyoNacimiento2" styleClass="texto"/>
+                <TextFlow prefWidth="300" prefHeight="400">
+                    <Text fx:id="descripcion2" styleClass="texto"/>
+                </TextFlow>
+                <Label fx:id="vida2" styleClass="texto"/>
+                <Label fx:id="stamina2" styleClass="texto"/>
+                <Label fx:id="victoriasYderrotas2" styleClass="texto"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante2"/>
+            </VBox>
 
-        <!-- CONTRINCANTE 3 -->
-        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
-            <Label fx:id="nombre3" styleClass="texto"/>
-            <Label fx:id="anyoNacimiento3" styleClass="texto"/>
-            <TextFlow prefWidth="300" prefHeight="400">
-                <Text fx:id="descripcion3" styleClass="texto"/>
-            </TextFlow>
-            <Label fx:id="vida3" styleClass="texto"/>
-            <Label fx:id="stamina3" styleClass="texto"/>
-            <Label fx:id="victoriasYderrotas3" styleClass="texto"/>
-            <Region VBox.vgrow="ALWAYS"/>
-            <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante3"/>
-        </VBox>
+            <!-- CONTRINCANTE 3 -->
+            <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+                <Label fx:id="nombre3" styleClass="texto"/>
+                <Label fx:id="anyoNacimiento3" styleClass="texto"/>
+                <TextFlow prefWidth="300" prefHeight="400">
+                    <Text fx:id="descripcion3" styleClass="texto"/>
+                </TextFlow>
+                <Label fx:id="vida3" styleClass="texto"/>
+                <Label fx:id="stamina3" styleClass="texto"/>
+                <Label fx:id="victoriasYderrotas3" styleClass="texto"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante3"/>
+            </VBox>
 
-        <!-- CONTRINCANTE 4 -->
-        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
-            <Label fx:id="nombre4" styleClass="texto"/>
-            <Label fx:id="anyoNacimiento4" styleClass="texto"/>
-            <TextFlow prefWidth="300" prefHeight="400">
-                <Text fx:id="descripcion4" styleClass="texto"/>
-            </TextFlow>
-            <Label fx:id="vida4" styleClass="texto"/>
-            <Label fx:id="stamina4" styleClass="texto"/>
-            <Label fx:id="victoriasYderrotas4" styleClass="texto"/>
-            <Region VBox.vgrow="ALWAYS"/>
-            <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante4"/>
-        </VBox>
+            <!-- CONTRINCANTE 4 -->
+            <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+                <Label fx:id="nombre4" styleClass="texto"/>
+                <Label fx:id="anyoNacimiento4" styleClass="texto"/>
+                <TextFlow prefWidth="300" prefHeight="400">
+                    <Text fx:id="descripcion4" styleClass="texto"/>
+                </TextFlow>
+                <Label fx:id="vida4" styleClass="texto"/>
+                <Label fx:id="stamina4" styleClass="texto"/>
+                <Label fx:id="victoriasYderrotas4" styleClass="texto"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante4"/>
+            </VBox>
 
-        <!-- CONTRINCANTE 5 -->
-        <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
-            <Label fx:id="nombre5" styleClass="texto"/>
-            <Label fx:id="anyoNacimiento5" styleClass="texto"/>
-            <TextFlow prefWidth="300" prefHeight="400">
-                <Text fx:id="descripcion5" styleClass="texto"/>
-            </TextFlow>
-            <Label fx:id="vida5" styleClass="texto"/>
-            <Label fx:id="stamina5" styleClass="texto"/>
-            <Label fx:id="victoriasYderrotas5" styleClass="texto"/>
-            <Region VBox.vgrow="ALWAYS"/>
-            <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante5"/>
-        </VBox>
-    </HBox>
-</VBox>
+            <!-- CONTRINCANTE 5 -->
+            <VBox styleClass="card" spacing="30" alignment="TOP_CENTER">
+                <Label fx:id="nombre5" styleClass="texto"/>
+                <Label fx:id="anyoNacimiento5" styleClass="texto"/>
+                <TextFlow prefWidth="300" prefHeight="400">
+                    <Text fx:id="descripcion5" styleClass="texto"/>
+                </TextFlow>
+                <Label fx:id="vida5" styleClass="texto"/>
+                <Label fx:id="stamina5" styleClass="texto"/>
+                <Label fx:id="victoriasYderrotas5" styleClass="texto"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button text="Jugar" styleClass="boton" onAction="#jugarContraContrincante5"/>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <AnchorPane pickOnBounds="false">
+
+        <Button text="Volver"
+                styleClass="botonVolver"
+                onAction="#volverAEscogerPartida"
+                AnchorPane.topAnchor="20.0"
+                AnchorPane.leftAnchor="50.0"/>
+
+    </AnchorPane>
+</StackPane>
