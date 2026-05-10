@@ -8,20 +8,20 @@
             fx:controller="org.juegoboxeo.controller.PelearController"
             styleClass="root">
 
-    <VBox spacing="25" AnchorPane.leftAnchor="690" AnchorPane.topAnchor="170" alignment="CENTER">
+    <VBox spacing="25" AnchorPane.leftAnchor="650" AnchorPane.topAnchor="170" alignment="CENTER">
         <VBox spacing="5" alignment="CENTER">
-        <Label text="Jugador" styleClass="logsTurnos"/>
-        <Label fx:id="logTurnoJugador" text="GOLPE | RESULTADO | DAÑO | CRÍTICO | STAMINA"
-               styleClass="logsTurnos"/>
+            <Label text="Jugador" styleClass="logsBoxeador"/>
+            <Label fx:id="resultadoJugadorLabel" text="GOLPE | RESULTADO | DAÑO | CRÍTICO | STAMINA"
+                   styleClass="logsTurnos"/>
         </VBox>
         <VBox spacing="5" alignment="CENTER">
-        <Label text="Contrincante" styleClass="logsTurnos" />
-        <Label fx:id="logTurnoContrincante" text="GOLPE | RESULTADO | DAÑO | CRÍTICO | STAMINA"
-               styleClass="logsTurnos"/>
+            <Label text="Contrincante" styleClass="logsBoxeador"/>
+            <Label fx:id="resultadoContrincanteLabel" text="GOLPE | RESULTADO | DAÑO | CRÍTICO | STAMINA"
+                   styleClass="logsTurnos"/>
         </VBox>
     </VBox>
 
-    <Label text="Daño - CosteStamina - ProbCritico - Precisión" styleClass="infoGolpes" AnchorPane.leftAnchor="635"
+    <Label text="Daño - CosteStamina - Precisión - ProbCritico" styleClass="infoGolpes" AnchorPane.leftAnchor="635"
            AnchorPane.bottomAnchor="210"/>
 
     <VBox spacing="15" AnchorPane.rightAnchor="300" AnchorPane.bottomAnchor="160">

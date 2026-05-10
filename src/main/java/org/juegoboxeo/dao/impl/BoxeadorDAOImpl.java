@@ -120,8 +120,7 @@ public class BoxeadorDAOImpl implements BoxeadorDAO {
         
         String sql = "DELETE FROM boxeador WHERE id = ?";
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             
             ps.setInt(1, idBoxeador);
             ps.executeUpdate();

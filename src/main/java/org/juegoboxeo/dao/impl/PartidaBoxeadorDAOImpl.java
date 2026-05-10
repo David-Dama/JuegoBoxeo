@@ -247,8 +247,7 @@ public class PartidaBoxeadorDAOImpl implements PartidaBoxeadorDAO {
         
         String sql = "DELETE FROM partida_boxeador WHERE id_partida = ? AND id_boxeador = ? AND rol = 'JUGADOR'";
         
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             
             ps.setInt(1, idPartida);
             ps.setInt(2, idBoxeador);

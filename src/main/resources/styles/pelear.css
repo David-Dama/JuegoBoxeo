@@ -1,10 +1,10 @@
-.root{
+.root {
     -fx-background-image: url("/images/ringPelea.png");
     -fx-background-size: cover;
     -fx-background-position: center;
 }
 
-.infoGolpes, .botonJugador, .botonContrincante, .tarjetaInfoGolpe{
+.infoGolpes, .botonJugador, .botonContrincante, .tarjetaInfoGolpe {
     -fx-background-radius: 10;
     -fx-background-color: #e33636;
     -fx-background-insets: 0;
@@ -17,27 +17,27 @@
     -fx-text-alignment: center;
 }
 
-.botonJugador, .botonContrincante, .tarjetaInfoGolpe{
+.botonJugador, .botonContrincante, .tarjetaInfoGolpe {
     -fx-pref-width: 160;
 }
 
-.botonJugador, .botonContrincante{
+.botonJugador, .botonContrincante {
     -fx-pref-height: 30;
     -fx-font-size: 20;
 }
 
-.tarjetaInfoGolpe{
+.tarjetaInfoGolpe {
     -fx-pref-height: 15;
     -fx-font-size: 15;
 }
 
-.infoGolpes{
+.infoGolpes {
     -fx-padding: 5;
-     -fx-pref-height: 50;
-     -fx-font-size: 20;
- }
+    -fx-pref-height: 50;
+    -fx-font-size: 20;
+}
 
-.botonJugador:hover{
+.botonJugador:hover {
     -fx-background-color: #e30d0d;
 }
 
@@ -55,7 +55,7 @@
     -fx-padding: 5;
 }
 
-.logsTurnos{
+.logsTurnos, .logsBoxeador {
     -fx-background-radius: 10;
     -fx-background-color: #e3dddd;
     -fx-background-insets: 0;
@@ -68,4 +68,12 @@
     -fx-alignment: center;
     -fx-text-alignment: center;
     -fx-padding: 5;
+}
+
+.logsBoxeador {
+
+}
+
+.logsTurnos {
+    -fx-pref-width: 450;
 }

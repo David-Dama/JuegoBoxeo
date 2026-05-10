@@ -3,7 +3,6 @@ package org.juegoboxeo.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -11,8 +10,7 @@ import javafx.stage.Stage;
 import org.juegoboxeo.dto.PartidaInfoDTO;
 import org.juegoboxeo.exceptions.NoSeEncuentranRegistrosException;
 import org.juegoboxeo.service.EscogerPartidaService;
-
-import java.util.Objects;
+import org.juegoboxeo.utils.Navegador;
 
 public class EscogerPartidaController {
     
@@ -47,9 +45,9 @@ public class EscogerPartidaController {
                 return;
             }
             
-            nombre.setText(info.getNombre());
-            victorias.setText(String.valueOf(info.getVictorias()));
-            derrotas.setText(String.valueOf(info.getDerrotas()));
+            nombre.setText(info.nombre());
+            victorias.setText(String.valueOf(info.victorias()));
+            derrotas.setText(String.valueOf(info.derrotas()));
         } catch (NoSeEncuentranRegistrosException e) {
             System.out.println(e.getMessage());
         }
@@ -89,41 +87,23 @@ public class EscogerPartidaController {
     }
     
     private void abrirCrearBoxeador(ActionEvent event, int idPartida) {
-        try {
-            
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/crearBoxeador.fxml"));
-            
-            Scene scene = new Scene(loader.load(), 1750, 950);
-            
-            CrearBoxeadorController controller = loader.getController();
-            controller.setIdPartida(idPartida);
-            
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            
-            stage.setScene(scene);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        
+        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/crearBoxeador.fxml", "/views/crearBoxeador.css");
+        
+        CrearBoxeadorController controller = loader.getController();
+        
+        controller.setIdPartida(idPartida);
     }
     
     private void abrirEscogerContrincante(ActionEvent event, int idPartida, int idBoxeadorJugador) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/escogerContrincante.fxml"));
-            
-            Scene scene = new Scene(loader.load(), 1750, 950);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/escogerContrincante.css")).toExternalForm());
-            
-            EscogerContrincanteController controller = loader.getController();
-            controller.settearDatos(idPartida, idBoxeadorJugador);
-            
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            
-            stage.setScene(scene);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        
+        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/escogerContrincante.fxml", "/styles/escogerContrincante.css");
+        
+        EscogerContrincanteController controller = loader.getController();
+        
+        controller.settearDatos(idPartida, idBoxeadorJugador);
     }
     
     //Eliminar partidas

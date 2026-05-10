@@ -1,12 +1,9 @@
 package org.juegoboxeo.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
-import java.util.Objects;
+import org.juegoboxeo.utils.Navegador;
 
 public class PaginaInicioController {
     @FXML
@@ -14,17 +11,9 @@ public class PaginaInicioController {
     
     @FXML
     private void irAEscogerPartida() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/escogerPartida.fxml"));
-            
-            Scene scene = new Scene(loader.load(), 1750, 950);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/escogerPartida.css")).toExternalForm());
-            
-            Stage stage = (Stage) botonEmpezar.getScene().getWindow();
-            stage.setScene(scene);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
+        Stage stage = (Stage) botonEmpezar.getScene().getWindow();
+        
+        Navegador.cambiarEscena(stage, "/views/escogerPartida.fxml", "/styles/escogerPartida.css");
     }
 }

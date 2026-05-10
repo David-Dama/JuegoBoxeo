@@ -1,14 +1,14 @@
-.root{
+.root {
     -fx-background-color: #13325a;
 }
 
-.texto{
+.texto {
     -fx-text-fill: black;
     -fx-font-family: Poppins Regular;
     -fx-font-size: 25px;
 }
 
-.titulo{
+.titulo {
     -fx-text-fill: white;
     -fx-font-size: 50px;
     -fx-font-family: Poppins Regular;
@@ -25,7 +25,7 @@
     -fx-pref-height: 400px;
 }
 
-.boton{
+.boton {
     -fx-background-color: #d60d0d;
     -fx-text-fill: white;
     -fx-pref-height: 50px;

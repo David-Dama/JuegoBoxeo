@@ -1,16 +1,19 @@
 package org.juegoboxeo.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.stage.Stage;
+import org.juegoboxeo.dto.ResultadoTurnoDTO;
 import org.juegoboxeo.exceptions.NoSeEncuentranRegistrosException;
 import org.juegoboxeo.model.Boxeador;
 import org.juegoboxeo.model.Golpe;
 import org.juegoboxeo.model.InformacionGolpe;
 import org.juegoboxeo.service.PelearService;
+import org.juegoboxeo.utils.Navegador;
 
 public class PelearController {
     
@@ -55,6 +58,12 @@ public class PelearController {
     
     @FXML
     private ImageView imagenContrincante;
+    
+    @FXML
+    private Label resultadoJugadorLabel;
+    
+    @FXML
+    private Label resultadoContrincanteLabel;
     
     private int idBoxeadorJugador;
     private int idBoxeadorContrincante;
@@ -132,7 +141,10 @@ public class PelearController {
     
     private void atacar(Golpe golpe) {
         
-        service.turnoJugador(golpe);
+        ResultadoTurnoDTO resultado = service.turnoJugador(golpe);
+        
+        resultadoJugadorLabel.setText(resultado.getJugador());
+        resultadoContrincanteLabel.setText(resultado.getContrincante());
         
         actualizarPantalla();
         
@@ -156,13 +168,43 @@ public class PelearController {
     
     private void comprobarGanador() {
         
-        if (!service.getJugador().estaVivo()) {
+        try {
+            if (!service.getJugador().estaVivo()) {
+                
+                service.finalizarPelea();
+                
+                mostrarMensaje("Has perdido");
+                
+                volverAEscogerContrincante();
+                
+            }
             
-            mostrarMensaje("Has perdido");
+            if (!service.getContrincante().estaVivo()) {
+                
+                service.finalizarPelea();
+                
+                mostrarMensaje("Has ganado");
+                
+                volverAEscogerContrincante();
+            }
+        } catch (NoSeEncuentranRegistrosException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void volverAEscogerContrincante() {
+        
+        try {
             
-        } else if (!service.getContrincante().estaVivo()) {
+            Stage stage = (Stage) vidaContrincante.getScene().getWindow();
             
-            mostrarMensaje("Has ganado");
+            FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/escogerContrincante.fxml", "/styles/escogerContrincante.css");
+            
+            EscogerContrincanteController controller = loader.getController();
+            
+            controller.settearDatos(idPartida, idBoxeadorJugador);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     

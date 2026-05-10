@@ -3,15 +3,13 @@ package org.juegoboxeo.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.juegoboxeo.dto.BoxeadorDTO;
 import org.juegoboxeo.exceptions.NoSeEncuentranRegistrosException;
 import org.juegoboxeo.service.EscogerContrincanteService;
-
-import java.util.Objects;
+import org.juegoboxeo.utils.Navegador;
 
 public class EscogerContrincanteController {
     
@@ -53,12 +51,12 @@ public class EscogerContrincanteController {
         try {
             BoxeadorDTO c = service.obtenerContrincante(idBoxeador, idPartida);
             
-            nombre.setText(c.getNombre());
-            anyoNacimiento.setText("Año: " + c.getAnyoNacimiento());
-            descripcion.setText(c.getDescripcion());
-            vida.setText("Vida: " + c.getVida());
-            stamina.setText("Stamina: " + c.getStamina());
-            stats.setText("V: " + c.getVictorias() + " - D: " + c.getDerrotas());
+            nombre.setText(c.nombre());
+            anyoNacimiento.setText("Año: " + c.anyoNacimiento());
+            descripcion.setText(c.descripcion());
+            vida.setText("Vida: " + c.vida());
+            stamina.setText("Stamina: " + c.stamina());
+            stats.setText("V: " + c.victorias() + " - D: " + c.derrotas());
         } catch (NoSeEncuentranRegistrosException e) {
             System.out.println(e.getMessage());
         }
@@ -66,35 +64,27 @@ public class EscogerContrincanteController {
     }
     
     @FXML
-    public void jugarContraContrincante1(ActionEvent event) {pelear(event, 1);}
+    public void jugarContraContrincante1(ActionEvent event) {irAPelear(event, 1);}
     
     @FXML
-    public void jugarContraContrincante2(ActionEvent event) {pelear(event, 2);}
+    public void jugarContraContrincante2(ActionEvent event) {irAPelear(event, 2);}
     
     @FXML
-    public void jugarContraContrincante3(ActionEvent event) {pelear(event, 3);}
+    public void jugarContraContrincante3(ActionEvent event) {irAPelear(event, 3);}
     
     @FXML
-    public void jugarContraContrincante4(ActionEvent event) {pelear(event, 4);}
+    public void jugarContraContrincante4(ActionEvent event) {irAPelear(event, 4);}
     
     @FXML
-    public void jugarContraContrincante5(ActionEvent event) {pelear(event, 5);}
+    public void jugarContraContrincante5(ActionEvent event) {irAPelear(event, 5);}
     
-    private void pelear(ActionEvent event, int idBoxeadorContrincante) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/pelear.fxml"));
-            
-            Scene scene = new Scene(loader.load(), 1750, 950);
-            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/pelear.css")).toExternalForm());
-            
-            PelearController controller = loader.getController();
-            controller.settearDatos(this.idBoxeadorJugador, idBoxeadorContrincante, this.idPartida);
-            
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void irAPelear(ActionEvent event, int idBoxeadorContrincante) {
+        
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        
+        FXMLLoader loader = Navegador.cambiarEscena(stage, "/views/pelear.fxml", "/styles/pelear.css");
+        
+        PelearController controller = loader.getController();
+        controller.settearDatos(this.idBoxeadorJugador, idBoxeadorContrincante, this.idPartida);
     }
 }
